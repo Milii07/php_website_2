@@ -33,7 +33,10 @@
 
   <div class="d-flex mt-5">
   <div class="container d-flex justify-content-center align-items-center text-danger">
-    <h1>Welcome </h1>
+    <h3> <?php
+    output_username();
+    ?>
+    </h3>
   </div>
 
 </div>
