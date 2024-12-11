@@ -24,7 +24,7 @@ require_once 'includes/signup_view.inc.php';
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="index.php" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link">Log in</a></li>
       </ul>
     </header>
   </div>

@@ -44,5 +44,5 @@ function is_email_invalid(string $email)
 
        function create_users(object $pdo, string $pwd, string $username, string $email ,string $birthday, string $surname)
        {
-         set_users( $pdo, $pwd,  $username, $email , $birthday, $surname);
+         return set_users( $pdo, $pwd,  $username, $email , $birthday, $surname);
        }

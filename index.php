@@ -2,6 +2,7 @@
 require_once 'includes/config_session.inc.php';
 
 require_once 'includes/login_view.inc.php';
+require_once 'includes\signup_view.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +31,7 @@ require_once 'includes/login_view.inc.php';
 
 <div class="col my-5 d-flex justify-content-center">
     <div class="card" style="width: 25rem; padding: 30px;">
+        <form method="POST" action="includes/login.inc.php" name="loginForm">
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
@@ -41,15 +43,16 @@ require_once 'includes/login_view.inc.php';
             <div class="row my-2">
                 <div class="col-12">
                     <label for="password"><p class="">Password</p></label>
-                    <input type="password" id="password" name="password"  class="form-control"  maxlength="7" minlength="4" required>
+                    <input type="password" id="password" name="pwd"  class="form-control"  maxlength="7" minlength="4" required>
                 </div>
             </div>
 
             <!-- No row class, just d-flex to align and auto width -->
             <div class="d-flex justify-content-end my-3">
-                <a href="Login" class="btn btn-primary">Login</a>
+                <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </div>
+</form>
     </div>
 </div>
 

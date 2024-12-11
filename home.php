@@ -1,9 +1,9 @@
 
 <?php
+        require_once 'includes/config_session.inc.php';
 
-// if(!isset($_SESSION['username'])){
-//     header('sinu');
-// }
+require 'includes\login_view.inc.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +21,13 @@
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         <span class="fs-4">Login Success</span>
-      </a>
+        </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="index.php" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="includes/home.php" class="nav-link">Logout</a></li>
       </ul>
     </header>
+  
   </div>
 
 

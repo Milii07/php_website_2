@@ -43,12 +43,17 @@ if ($errors) {
     die();
 }
 
-create_users($pdo, $pwd, $username, $email,$birthday,$surname);
-header("Location: ../singup.php?signup=success");
-$pdo = null;
-$stmt = null;
+$userid = create_users($pdo, $pwd, $username, $email,$birthday,$surname);
+$newSessionId = session_create_id();
+$newSessionId = $newSessionId . "_" . $result["id"];
+session_id($sessionId);
 
-die();
+$_SESSION["user_id"] = $userid;
+$_SESSION["user_email"] = $email;
+$_SESSION["username"] = $username;
+
+$_SESSION["last_regeneration"] = time();
+header("Location:../home.php");
        
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());

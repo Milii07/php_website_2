@@ -64,4 +64,6 @@ $options);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":birthday", $birthday);
     $stmt->execute(); 
+    return  $pdo->lastInsertId();
+
 }

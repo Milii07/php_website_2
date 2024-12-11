@@ -2,7 +2,7 @@
    
 declare(strict_types=1);
 
-function is_input_empty(string $pwd, string $email) 
+function is_input_empty($pwd,  $email) 
 {
     if (empty($pwd)|| empty($email)) {
         return true;
@@ -11,7 +11,7 @@ function is_input_empty(string $pwd, string $email)
     }
 }
 
-function is_email_wrong(array $result)
+function is_email_wrong($result)
 {
     if (!$result) {
         return true;
@@ -20,11 +20,14 @@ function is_email_wrong(array $result)
     }
 }
 
-function is_password_wrong(string $pwd, string $hashedPwd)
+function is_password_wrong( $pwd, $hashedPwd)
 {
-    if (!password_verify($pwd, $hashedPwd)) {
+
+    if(empty($pwd) || empty($hashedPwd)){
+        return true;
+    }
+    if ($pwd == $hashedPwd) {
+        return false;
+    }
     return true;
-} else {
-    return false;
-}
 }
