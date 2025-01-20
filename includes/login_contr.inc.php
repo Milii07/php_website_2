@@ -20,14 +20,21 @@ function is_email_wrong($result)
     }
 }
 
-function is_password_wrong( $pwd, $hashedPwd)
+function is_password_wrong($pwd,$hashedPwd)
 {
-
-    if(empty($pwd) || empty($hashedPwd)){
+    if(empty($pwd)){
         return true;
+
+    } else {
+        if(empty($hashedPwd)){
+            return true;
+
+        } else {
+            if(md5($pwd) != $hashedPwd){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
-    if ($pwd == $hashedPwd) {
-        return false;
-    }
-    return true;
 }

@@ -1,7 +1,9 @@
 <?php
 require_once 'includes/config_session.inc.php';
 require_once 'includes/signup_view.inc.php';
-
+if(isset($_SESSION['user_id'])){
+    header("Location: home.php");
+}
 ?>
 
 
@@ -18,7 +20,7 @@ require_once 'includes/signup_view.inc.php';
 <body style="background: #f7f7f7">
 <div class="container-fluid" style="background: #fff">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <a href="singup.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         <span class="fs-4">Sing up System</span>
       </a>

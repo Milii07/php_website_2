@@ -5,3 +5,4 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
 );
+

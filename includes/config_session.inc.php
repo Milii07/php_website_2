@@ -3,7 +3,7 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_strict_mode', 1);
 
 session_set_cookie_params([
-    'lifetime' => 1800,
+    'lifetime' => 3600,
     'domain' => 'localhost',
     'path' => '/',
     'secure' => true,
@@ -35,19 +35,11 @@ if(isset($_SESSION["user_id"])) {
 }
 
 
-function regenerate_session_id_loggedin()
-{
-    session_regenerate_id(true);
-
-    $userId = $_SESSION["user_id"];
-    $newSessionId = session_create_id();
-    $newSessionId = $newSessionId . "_" . $userId;
-    session_id($sessionId);
 
 
 
-    $_SESSION["last_regeneration"] = time();
-}
+    //$_SESSION["last_regeneration"] = time();
+//}
 
 
 function regenerate_session_id()
