@@ -1,15 +1,10 @@
 <?php
 
 require_once 'includes/dbh.inc.php';
-
 require_once 'includes/config_session.inc.php';
-
 require 'includes/login_view.inc.php';
-
 include_once 'includes/articles.inc.php';
-
 include_once 'includes/categories.inc.php';
-
 
 ?>
 <!DOCTYPE html>
@@ -50,8 +45,6 @@ include_once 'includes/categories.inc.php';
         <?php }
       } ?>
 
-
-
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
       </ul>
@@ -73,7 +66,6 @@ include_once 'includes/categories.inc.php';
   <?php if (count($allArticles) > 0) {
 
     for ($i = 0; $i < count($allArticles); $i++) { ?>
-
 
       <div class="d-flex mt-5">
         <div class="container d-flex justify-content-center align-items-center text-danger">
@@ -103,8 +95,6 @@ include_once 'includes/categories.inc.php';
                 <p class="text-dark"><?php echo $author["username"]; ?></p> <?php } ?>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <form action="update_text.php" method="POST">
-
-
                   <a href=<?php echo "edit.php?article_id=" . $allArticles[$i]["id"]; ?>><button class="btn btn-danger me-md-2"
                       type="button">Edit</button></a>
                   <a href=<?php echo "product.php?article_id=" . $allArticles[$i]["id"]; ?>><button

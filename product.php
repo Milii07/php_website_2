@@ -29,8 +29,6 @@ if(!$singleArticle){
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         <span class="fs-4">Login Success</span>
       </a>
-
-
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
       </ul>
@@ -46,10 +44,8 @@ if(!$singleArticle){
   
   </div>
 
-
   <?php if($singleArticle) { ?>
     
-
   <div class="d-flex mt-5">
     <div class="container d-flex justify-content-center align-items-center text-danger">
 

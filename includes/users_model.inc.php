@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 function getAllUsers(object $pdo){
     $query = "SELECT * FROM users";
     $stmt = $pdo->prepare($query);

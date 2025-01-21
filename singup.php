@@ -6,7 +6,6 @@ if(isset($_SESSION['user_id'])){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,13 +80,10 @@ if(isset($_SESSION['user_id'])){
 
 </form>
 
-
-
 </div>
 <?php
 check_signup_errors();
 ?>
-    
     
 </body>
 </html>

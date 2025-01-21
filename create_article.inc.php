@@ -1,17 +1,13 @@
 <?php
 
 require_once 'includes/dbh.inc.php';
-
 require_once 'includes/config_session.inc.php';
-
 include_once 'includes/categories.inc.php';
-
 include_once 'includes/users_model.inc.php';
 
 $allUsers = getAllUsers($pdo);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

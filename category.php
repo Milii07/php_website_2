@@ -5,9 +5,7 @@
 require_once 'includes/dbh.inc.php';
 require_once 'includes/config_session.inc.php';
 require 'includes/login_view.inc.php';
-
 require 'includes/articles.inc.php';
-
 require 'includes/categories.inc.php';
 require 'includes/category.inc.php';
 
@@ -79,7 +77,6 @@ for($i=0;$i<count($allCategories);$i++){
 <?php
 
 $lines = explode("\n", $allArticlesByCategory[$i]["content"]);
-
 
 if (count($lines) > 1) {
     echo $lines[0] . "<br>"; 

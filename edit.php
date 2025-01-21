@@ -1,11 +1,8 @@
 <?php
 
 require_once 'includes/dbh.inc.php';
-
 require_once 'includes/config_session.inc.php';
-
 include_once 'includes/categories.inc.php';
-
 include_once 'includes/users_model.inc.php';
 include_once 'includes/articles_model.inc.php';
 
@@ -21,7 +18,6 @@ if(!$article){
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,8 +45,6 @@ if(!$article){
         <li class="nav-item"><a href=<?php echo "category.php?id=" . $allCategories[$i]["id"];?>  class="nav-link" style="color: red;"><?php echo $allCategories[$i]["title"];?></a></li>
       </ul>
       <?php }}?>
-
-      
 
         <ul class="nav nav-pills">
         <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
