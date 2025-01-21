@@ -72,38 +72,30 @@ for($i=0;$i<count($allCategories);$i++){
                 <div class="card-body">
                   <h1 class="card-title"><?php echo $allArticlesByCategory[$i]["title"]?></h1>
                   <h4 class="card-subtitle"><?php echo $allArticlesByCategory[$i]["subtitle"]?></h4>
-                <p class="text-sm-start text-dark">
+                  <p class="text-sm-start text-dark">
+                  <?php
 
-<?php
+                  $lines = explode("\n", $allArticlesByCategory[$i]["content"]);
 
-$lines = explode("\n", $allArticlesByCategory[$i]["content"]);
+                  if (count($lines) > 1) {
+                      echo $lines[0] . "<br>"; 
+                      echo $lines[1] . "<br>";  
+                  } else {
+                      echo $lines[0] . "<br>";
+                  } ?>   </p>
 
-if (count($lines) > 1) {
-    echo $lines[0] . "<br>"; 
-    echo $lines[1] . "<br>";  
-} else {
-    echo $lines[0] . "<br>";
-} ?></p>
-
-            <p >Author</p>
-            <p class="text-dark"><?php echo getArticleAuthor($pdo,$allArticlesByCategory[$i]["user_id"])["username"];?></p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href=<?php echo "product.php?article_id=".$allArticlesByCategory[$i]["id"];?>><button class="btn btn-primary me-md-2" type="button">Read more</button></a>
+                  <p >Author</p>
+                  <p class="text-dark"><?php echo getArticleAuthor($pdo,$allArticlesByCategory[$i]["user_id"])["username"];?></p>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href=<?php echo "product.php?article_id=".$allArticlesByCategory[$i]["id"];?>><button class="btn btn-primary me-md-2" type="button">Read more</button></a>
+                  </div>
+                </div>
+              </div>
 
 
-
-
-              
-              
-            </div>
-           
           </div>
+
         </div>
-
-
-    </div>
-
-</div>
 
 
 <?php } } else { echo "No articles found";}?>
