@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/config_session.inc.php';
 require_once 'includes/login_view.inc.php';
-require_once 'includes\signup_view.inc.php';
+require_once 'includes/signup_view.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ require_once 'includes\signup_view.inc.php';
                 <svg class="bi me-2" width="40" height="32">
                     <use xlink:href="index.php"></use>
                 </svg>
-                <span class="fs-4">Login System</span>
+                <span class="fs-4">Green Shop</span>
             </a>
 
             <ul class="nav nav-pills">

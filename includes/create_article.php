@@ -9,9 +9,9 @@
 
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
-        $user_id = $_SESSION['username'];
+        $user_id = $_SESSION['user_id'];
         $content = $_POST['content'];
-
+        $category = $_POST['category'];
         
         $stmt = $pdo->prepare("INSERT INTO articles (title, subtitle, user_id, content) VALUES (?,?,?,?)");
         $stmt->bindValue(1, $title);
@@ -20,7 +20,14 @@
         $stmt->bindValue(4, $content);
         $stmt->execute();
 
-        header("location: ../home.php");
+        $articleId = $pdo->lastInsertId();
+
+        $stmt = $pdo->prepare("INSERT INTO articles_categories VALUES (?,?)");
+        $stmt->bindValue(1, $articleId);
+        $stmt->bindValue(2, $category);
+        $stmt->execute();
+
+         header("location: ../home.php");
 
     }
 

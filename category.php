@@ -22,33 +22,7 @@ require 'includes/category.inc.php';
     <title>Php project</title>  
 </head>
 <body style="background: #f7f7f7">
-<div class="container-fluid" style="background: #fff">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="home.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">Login Success</span>
-        </a>
-
-      <?php if(count($allCategories) > 0) { for($i=0;$i<count($allCategories);$i++){ ?>
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href=<?php echo "category.php?id=" . $allCategories[$i]["id"];?>  class="nav-link" style="color: red;"><?php echo $allCategories[$i]["title"];?></a></li>
-      </ul>
-      <?php }}?>
-
-        <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
-      </ul>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">SETTINGS</a></li>
-      </ul>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="includes/logout.php" class="nav-link">LOGOUT</a></li>
-      </ul>
-
-    </header>
-  </div>
+<?php include_once 'menu.php';?>
 <div class="container justify-content-center py-3 mb-3">    <h1 class="text-center text-success">
   
   <?php 
@@ -87,6 +61,12 @@ for($i=0;$i<count($allCategories);$i++){
                   <p >Author</p>
                   <p class="text-dark"><?php echo getArticleAuthor($pdo,$allArticlesByCategory[$i]["user_id"])["username"];?></p>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <!-- shto butonin edit -->
+                    <?php if($is_loggedin && $_SESSION['user_id'] == $allArticlesByCategory[$i]["user_id"]){ ?>
+                      <a href=<?php echo "edit.php?article_id=".$allArticlesByCategory[$i]["id"];?> class="btn btn-danger me-md-2" type="button">
+                                  Edit
+                            </a>
+                      <?php } ?>
                     <a href=<?php echo "product.php?article_id=".$allArticlesByCategory[$i]["id"];?>><button class="btn btn-primary me-md-2" type="button">Read more</button></a>
                   </div>
                 </div>
@@ -97,9 +77,15 @@ for($i=0;$i<count($allCategories);$i++){
 
         </div>
 
+        <?php } ?>
 
-<?php } } else { echo "No articles found";}?>
-
+<?php } else { ?>
+  
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <h1 class="text-center text-dark">No article found</h1>
+    </div>
+    
+<?php } ?>
     
     
 </body>

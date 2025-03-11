@@ -8,8 +8,8 @@ function output_username()
         echo "You are logged in as " . $_SESSION["username"];
 
     } else {
-        $_SESSION["errors_signup"] = ["Please login to continue"];
-        header("Location: index.php");
+        // $_SESSION["errors_signup"] = ["Please login to continue"];
+        // header("Location: index.php");
     }
 }
 

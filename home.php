@@ -23,91 +23,52 @@ include_once 'includes/categories.inc.php';
 </head>
 
 <body style="background: #f7f7f7">
-  <div class="container-fluid" style="background: #fff">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="home.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-4">Login Success</span>
-      </a>
+<?php include_once 'menu.php';?>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="create_article.inc.php" class="nav-link" style="color: purple;">Create article</a>
-        </li>
-      </ul>
-      <?php if ($allCategories && count($allCategories) > 0) {
-        for ($i = 0; $i < count($allCategories); $i++) { ?>
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href=<?php echo "category.php?id=" . $allCategories[$i]["id"]; ?> class="nav-link"
-                style="color: red;"><?php echo $allCategories[$i]["title"]; ?></a></li>
-          </ul>
-        <?php }
-      } ?>
+<div class="container justify-content-center py-3 mb-3">
+    <h1 class="text-center text-success">All Articles</h1>
+</div>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
-      </ul>
+<?php 
+if (isset($allArticles) && count($allArticles) > 0) {
+    for ($i = 0; $i < count($allArticles); $i++) {?>
+        <div class="d-flex mt-5">
+            <div class="container d-flex justify-content-center align-items-center text-danger">
+                <div class="card" style="width: 70rem;">
+                    <div class="card-body">
+                        <h1 class="card-title"><?php echo $allArticles[$i]["title"] ?></h1>
+                        <h4 class="card-subtitle"><?php echo $allArticles[$i]["subtitle"] ?></h4>
+                        <p class="text-sm-start text-dark">
+                            <?php
+                            $lines = explode("\n", $allArticles[$i]["content"]);
+                            echo isset($lines[1]) ? $lines[0] . "<br>" . $lines[1] . "<br>" : $lines[0] . "<br>";
+                            ?>
+                        </p>
+                        <p>Author</p>
+                        <?php 
+                        $author = getArticleAuthor($pdo, $allArticles[$i]["user_id"]);
+                        if ($author) { ?>
+                            <p class="text-dark"><?php echo $author["username"]; ?></p> 
+                        <?php } ?>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <?php if ($is_loggedin && $_SESSION['user_id'] == $allArticles[$i]["user_id"]) { ?>
+                              <a href=<?php echo "edit.php?article_id=".$allArticles[$i]["id"];?> class="btn btn-danger me-md-2" type="button">
+                                  Edit
+                            </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">SETTINGS</a></li>
-      </ul>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="includes/logout.php" class="nav-link">LOGOUT</a></li>
-      </ul>
-
-    </header>
-  </div>
-  <div class="container justify-content-center py-3 mb-3">
-    <h1 class="text-center text-success">All Article</1>
-  </div>
-
-  <?php if (count($allArticles) > 0) {
-
-    for ($i = 0; $i < count($allArticles); $i++) { ?>
-
-      <div class="d-flex mt-5">
-        <div class="container d-flex justify-content-center align-items-center text-danger">
-
-          <div class="card" style="width: 70rem;">
-            <div class="card-body">
-              <h1 class="card-title"><?php echo $allArticles[$i]["title"] ?></h1>
-              <h4 class="card-subtitle"><?php echo $allArticles[$i]["subtitle"] ?></h4>
-              <p class="text-sm-start text-dark">
-
-                <?php
-
-                $lines = explode("\n", $allArticles[$i]["content"]);
-
-
-                if (count($lines) > 1) {
-                  echo $lines[0] . "<br>";
-                  echo $lines[1] . "<br>";
-                } else {
-                  echo $lines[0] . "<br>";
-                } ?>
-              </p>
-
-              <p>Author</p>
-              <?php $author = getArticleAuthor($pdo, $allArticles[$i]["user_id"]);
-              if ($author) { ?>
-                <p class="text-dark"><?php echo $author["username"]; ?></p> <?php } ?>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <form action="update_text.php" method="POST">
-                  <a href=<?php echo "edit.php?article_id=" . $allArticles[$i]["id"]; ?>><button class="btn btn-danger me-md-2"
-                      type="button">Edit</button></a>
-                  <a href=<?php echo "product.php?article_id=" . $allArticles[$i]["id"]; ?>><button
-                      class="btn btn-primary me-md-2" type="button">Read more</button></a>
-              </div>
+                            <?php } ?>
+                            <a href="product.php?article_id=<?php echo $allArticles[$i]["id"]; ?>">
+                                <button class="btn btn-primary me-md-2" type="button">Read more</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     <?php }
-  } else {
-    echo "No articles found";
-  } ?>
+} 
+?>
 
 </body>
 

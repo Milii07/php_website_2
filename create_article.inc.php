@@ -4,6 +4,7 @@ require_once 'includes/dbh.inc.php';
 require_once 'includes/config_session.inc.php';
 include_once 'includes/categories.inc.php';
 include_once 'includes/users_model.inc.php';
+include_once 'includes/create_model.inc.php';
 
 $allUsers = getAllUsers($pdo);
 
@@ -20,36 +21,7 @@ $allUsers = getAllUsers($pdo);
 
 </head>
 <body>
-<div class="container-fluid" style="background: #fff">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="home.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">Login Success</span>
-        </a>
-
-        <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link" style="color: purple;">Create article</a></li>
-      </ul>
-      <?php if($allCategories && count($allCategories) > 0) { for($i=0;$i<count($allCategories);$i++){ ?>
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href=<?php echo "category.php?id=" . $allCategories[$i]["id"];?>  class="nav-link" style="color: red;"><?php echo $allCategories[$i]["title"];?></a></li>
-      </ul>
-      <?php }}?>
-
-        <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">HOME</a></li>
-      </ul>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="home.php" class="nav-link">SETTINGS</a></li>
-      </ul>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="includes/logout.php" class="nav-link">LOGOUT</a></li>
-      </ul>
-
-    </header>
-  </div>
+<?php include_once 'menu.php';?>
 
 <div class="container justify-content-center py-3 mb-3">    <h1 class="text-center text-success">Create Article</1></div>
 
@@ -73,6 +45,20 @@ $allUsers = getAllUsers($pdo);
             <label for="content" class="form-label" style="color: purple;">Content:</label>
             <textarea class="form-control" id="content" name="content" required></textarea>
         </div>
+
+<div class="mb-3 col-md-18">
+    <label for="content" class="form-label" style="color: purple;">Select Category:</label>
+    <select class="form-select" name="category"  aria-label="Select category">
+    <option selected>Category</option>
+        <?php 
+       
+        foreach ($allCategories as $category) {
+            echo "<option value='" . $category['id'] . "'>" . $category['title'] . "</option>";
+        }
+        ?>
+    </select>
+</div>
+
 
 
        <button type="submit" class="btn btn-primary">Submit</button>
